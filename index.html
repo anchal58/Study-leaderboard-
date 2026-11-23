@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Study Leaderboard</title>
+<style>
+body {
+  background: #101522;
+  color: white;
+  font-family: Arial, sans-serif;
+  padding: 15px;
+}
+.container {
+  max-width: 500px;
+  margin: auto;
+  background: #1c2638;
+  padding: 20px;
+  border-radius: 15px;
+}
+h1 { text-align: center; color: #ffd166; }
+.subtitle { text-align: center; color: #aaa; }
+.player {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  margin: 8px 0;
+  background: #29364b;
+  border-radius: 8px;
+}
+.rank { color: #ffd166; }
+.winner {
+  text-align: center;
+  padding: 15px;
+  color: #ffd166;
+  font-size: 20px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🏆 STUDY LEADERBOARD</h1>
+<p class="subtitle">DAILY TOP 10</p>
+<div id="players"></div>
+<div class="winner" id="winner"></div>
+<p class="subtitle">Demo leaderboard - tracking not connected yet</p>
+</div>
+
+<script>
+const players = [
+["Student A", "08h 25m", 500],
+["Student B", "07h 40m", 460],
+["Student C", "06h 15m", 400],
+["Student D", "05h 50m", 350],
+["Student E", "05h 20m", 320],
+["Student F", "04h 45m", 280],
+["Student G", "04h 10m", 250],
+["Student H", "03h 55m", 220],
+["Student I", "03h 20m", 180],
+["Student J", "02h 50m", 150]
+];
+
+players.sort((a,b) => b[2]-a[2]);
+
+document.getElementById("players").innerHTML =
+players.map((p,i) =>
+`<div class="player">
+<span><span class="rank">#${i+1}</span> ${p[0]}</span>
+<span>${p[1]} | ${p[2]} pts</span>
+</div>`
+).join("");
+
+document.getElementById("winner").innerHTML =
+"🏆 Daily Winner: " + players[0][0];
+</script>
+</body>
+</html>
